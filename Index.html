@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Timer</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  
+  </style>
+</head>
+<body>
+  <h1>⏱️ Raven's Work Timer</h1>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <a href="checklist.html" class="tab">Checklist</a>
+    <a href="jukebox.html" class="tab">Jukebox</a>
+  <a href="meat-tabs/index.html" class="tab">Meat Codes</a>
+  <a href="schedule.html" class="tab">Schedule</a>
+</div>
+  <a href="holes.html" class="tab">Holes</a>
+  <!-- Timer Buttons -->
+  <button onclick="clockIn()">Clock In</button>
+  <button onclick="startLunch()">Start Lunch</button>
+  <button onclick="endLunch()">End Lunch</button>
+  <button onclick="clockOut()">Clock Out</button>
+
+  <!-- Timer Display -->
+  <div id="timer">Timer: <span id="totalWorked">00h 00m 00s</span></div>
+
+  <!-- Time Stamps -->
+  <p>🕒 Clock In Time: <span id="inTime">--:--</span></p>
+  <p>🍱 Lunch Start: <span id="lunchStart">--:--</span></p>
+  <p>🍱 Lunch End: <span id="lunchEnd">--:--</span></p>
+  <p>🕔 Clock Out Time: <span id="outTime">--:--</span></p>
+  <p>⏳ Lunch Countdown: <span id="lunchCountdown">--</span></p>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999;"></canvas>
+
+  <!-- Confetti Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Work Timer Script -->
+  <script>
+    let clockInTime = null, clockOutTime = null, lunchStartTime = null, lunchEndTime = null;
+    let workTimerInterval = null, lunchTimerInterval = null;
+    let totalPausedMs = 0, lastPauseStart = null;
+
+    function formatTime(date) {
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function clockIn() {
+      clockInTime = new Date();
+      document.getElementById("inTime").textContent = formatTime(clockInTime);
+      totalPausedMs = 0;
+      lastPauseStart = null;
+      startWorkTimer();
+    }
+
+    function startLunch() {
+      if (!clockInTime) return alert("You must clock in first!");
+      lunchStartTime = new Date();
+      document.getElementById("lunchStart").textContent = formatTime(lunchStartTime);
+      lastPauseStart = new Date();
+      stopWorkTimer();
+      startLunchCountdown(30 * 60); // 30 min
+    }
+
+    function endLunch() {
+      if (!lastPauseStart) return alert("Lunch hasn't started!");
+      lunchEndTime = new Date();
+      document.getElementById("lunchEnd").textContent = formatTime(lunchEndTime);
+      totalPausedMs += (lunchEndTime - lastPauseStart);
+      lastPauseStart = null;
+      stopLunchCountdown();
+      startWorkTimer();
+    }
+
+    function clockOut() {
+      if (!clockInTime) return alert("You must clock in first!");
+      clockOutTime = new Date();
+      document.getElementById("outTime").textContent = formatTime(clockOutTime);
+      stopWorkTimer();
+      stopLunchCountdown();
+      updateWorkedTime();
+      triggerConfetti();
+    }
+
+    function updateWorkedTime() {
+      if (!clockInTime) return;
+      let endTime = clockOutTime || new Date();
+      let totalMs = endTime - clockInTime - totalPausedMs;
+      let h = Math.floor(totalMs / 3600000);
+      let m = Math.floor((totalMs % 3600000) / 60000);
+      let s = Math.floor((totalMs % 60000) / 1000);
+      document.getElementById("totalWorked").textContent = `${h}h ${m}m ${s}s`;
+    }
+
+    function startWorkTimer() {
+      stopWorkTimer();
+      workTimerInterval = setInterval(updateWorkedTime, 1000);
+    }
+
+    function stopWorkTimer() {
+      if (workTimerInterval) clearInterval(workTimerInterval);
+    }
+
+    function startLunchCountdown(secondsLeft) {
+      const el = document.getElementById("lunchCountdown");
+      function update() {
+        let min = Math.floor(secondsLeft / 60), sec = secondsLeft % 60;
+        el.textContent = `${min}m ${sec < 10 ? '0' : ''}${sec}s`;
+        secondsLeft--;
+        if (secondsLeft < 0) {
+          clearInterval(lunchTimerInterval);
+          el.textContent = "Lunch time's up!";
+        }
+      }
+      update();
+      lunchTimerInterval = setInterval(update, 1000);
+    }
+
+    function stopLunchCountdown() {
+      if (lunchTimerInterval) clearInterval(lunchTimerInterval);
+      document.getElementById("lunchCountdown").textContent = "--";
+    }
+
+    function triggerConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
+      myConfetti({ particleCount: 150, spread: 120, origin: { y: 0.6 } });
+    }
+  </script>
+</body>
+</html>

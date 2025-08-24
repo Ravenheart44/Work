@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="tabs">
+    <a href="index.html" class="tab">Work Timer</a>
+    <a href="jukebox.html" class="tab">Jukebox</a>
+  <a href="meat-tabs/index.html" class="tab">Meat Codes</a>
+  <a href="schedule.html" class="tab">Schedule</a>
+</div>
+  <title>Daily Tasks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Ron Addams - Daily Tasks</h1>
+  <form id="schedule-form">
+
+    <fieldset>
+  <legend><h2>Select Your Shift</h2></legend>
+  <label>
+    <input type="radio" name="shift" value="opening"> Opening Shift (7 AM - 3 PM)
+  </label>
+  <label>
+    <input type="radio" name="shift" value="closing"> Closing Shift (11 AM - 7 PM)
+  </label>
+  
+  </form>
+</div>
+
+</fieldset>
+
+
+    <fieldset id="opening">
+      <legend><h2>Opening Shift (7 AM - 3 PM)</h2></legend>
+
+      <div class="progress-container"><div class="progress-bar" id="progress-opening"></div></div>
+
+      <label class="task">
+        <input type="checkbox" data-task="close1"> Fill 3 Compartment Sink
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="close1">Wash</label>
+      <label class="subtask"><input type="checkbox" data-subtask="close1">Rinse</label>
+<label class="subtask"><input type="checkbox" data-subtask="close1">Sanitizer</label>
+      
+      <label class="task">
+        <input type="checkbox" data-task="close2"> Wipe Down Equipment
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="close2">Scales</label>
+      <label class="subtask"><input type="checkbox" data-subtask="close2">Cutting Tables</label>
+    </fieldset>
+
+    <fieldset id="closing">
+      <legend><h2>Closing Shift (11 AM - 7 PM)</h2></legend>
+
+      <div class="progress-container"><div class="progress-bar" id="progress-closing"></div></div>
+
+        <label class="task">
+        <input type="checkbox" data-task="open1"> Complete Needed Grinds
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> 93%</label>
+        <label class="subtask">
+  How Many? <input type="number" min="0" max="99" class="small-number" data-subsubtask="open1">
+</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> 85%</label>
+      <label class="subtask">
+  How Many? <input type="number" min="0" max="99" class="small-number" data-subsubtask="open1">
+</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> 80%</label>
+      <label class="subtask">
+  How Many? <input type="number" min="0" max="99" class="small-number" data-subsubtask="open1">
+</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> 73%(FP)</label>
+      <label class="subtask">
+  How Many? <input type="number" min="0" max="99" class="small-number" data-subsubtask="open1">
+</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> 73%(2D)</label>
+      <label class="subtask">
+  How Many? <input type="number" min="0" max="99" class="small-number" data-subsubtask="open1">
+</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open1"> Complete Grind Log</label>
+
+
+      <label class="task">
+        <input type="checkbox" data-task="open2"> Fill the Floor
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="open2"> Lunchmeat Backstock</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open2"> Red Meat</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open2"> Chicken</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open2"> Pork</label>
+
+      <label class="task">
+        <input type="checkbox" data-task="open3"> Clean the meat room
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Meat Grinder</label>
+      <div class="sub-subtask">
+    <label><input type="checkbox" data-subsubtask="open3"> Break Down</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Soak Parts</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Scrub Machine</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Scrub Parts</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Soak Parts</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Rinse Parts</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Sanitize Parts</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Rinse Machine</label>
+  </div>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Cutting Table</label>
+      <div class="sub-subtask">
+    <label><input type="checkbox" data-subsubtask="open3"> Pour Block Whitener on and scrub in</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Let Soak</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Scrub</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Rinse</label>
+      </div>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Floor Drains</label>
+      <div class="sub-subtask">
+    <label><input type="checkbox" data-subsubtask="open3"> Scrub with floor brush</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Spray with hose</label>
+  </div>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Scales</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Take out Trash</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Take out Cardboard</label>
+      <div class="sub-subtask">
+    <label><input type="checkbox" data-subsubtask="open3"> Toss into Bailer</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Crush</label>
+  </div>
+      <label class="subtask"><input type="checkbox" data-subtask="open3"> Clean Floor</label>
+        <div class="sub-subtask">
+    <label><input type="checkbox" data-subsubtask="open3"> Spray with part 1 (hose)</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Spray with part 2 (hose)</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Scrub</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Spray with hose(rinse)</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Squeegee</label>
+    <label><input type="checkbox" data-subsubtask="open3"> Sanitize</label>
+  </div>
+
+      <label class="task">
+        <input type="checkbox" data-task="open4"> Check out with MOD
+      </label>
+      <label class="subtask"><input type="checkbox" data-subtask="open4"> Sales Floor</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open4"> Meatroom</label>
+      <label class="subtask"><input type="checkbox" data-subtask="open4"> Meat Cooler</label>
+    </fieldset>
+
+    <label>Notes:</label><br>
+    <textarea id="notes"></textarea><br>
+
+    <button type="button" onclick="saveReport()">Save Report</button>
+    <button type="button" onclick="downloadLog()">Download Log History</button>
+  </form>
+
+  
+  <script>
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        handleSubtasks();
+        updateProgress();
+      });
+    });
+    
+    document.querySelectorAll('input[name="shift"]').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const selected = this.value;
+    document.getElementById('opening').style.display = selected === 'opening' ? 'block' : 'none';
+    document.getElementById('closing').style.display = selected === 'closing' ? 'block' : 'none';
+
+    // Reset progress bars and subtasks when switching
+    updateProgress();
+  });
+});
+
+
+
+    function handleSubtasks() {
+  const taskGroups = {};
+
+  // Group subtasks
+  document.querySelectorAll('[data-subtask]').forEach(sub => {
+    const group = sub.getAttribute('data-subtask');
+    if (!taskGroups[group]) taskGroups[group] = [];
+    taskGroups[group].push(sub);
+  });
+
+  // Group sub-subtasks
+  const subsubGroups = {};
+  document.querySelectorAll('[data-subsubtask]').forEach(subsub => {
+    const group = subsub.getAttribute('data-subsubtask');
+    if (!subsubGroups[group]) subsubGroups[group] = [];
+    subsubGroups[group].push(subsub);
+  });
+
+  for (const group in taskGroups) {
+    const task = document.querySelector(`[data-task="${group}"]`);
+    const subtasks = taskGroups[group];
+    const subsubs = subsubGroups[group] || [];
+
+    const allChecked = [...subtasks, ...subsubs].every(cb => cb.checked || (cb.type === 'number' && cb.value !== ""));
+    const anyChecked = [...subtasks, ...subsubs].some(cb => cb.checked || (cb.type === 'number' && cb.value !== ""));
+
+    if (allChecked) task.checked = true;
+    else if (!anyChecked) task.checked = false;
+
+    // Make task check toggle everything under it
+    task.addEventListener('change', () => {
+      [...subtasks, ...subsubs].forEach(cb => {
+        if (cb.type === 'checkbox') cb.checked = task.checked;
+        if (cb.type === 'number' && task.checked) cb.value = "1";
+        if (cb.type === 'number' && !task.checked) cb.value = "";
+      });
+      updateProgress();
+    });
+  }
+}
+
+
+    
+
+
+    function saveReport() {
+      const date = new Date().toISOString();
+      const shortDate = date.split('T')[0];
+      const filename = `Ron Addams, Daily Task List - ${shortDate}.txt`;
+
+      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      let content = `Ron Addams - Daily Task List\nDate: ${shortDate}\n\nCompleted Tasks:\n`;
+      checkboxes.forEach(cb => {
+        content += `- ${cb.parentElement.innerText.trim()}\n`;
+      });
+
+      const notes = document.getElementById('notes').value;
+      content += `\nNotes:\n${notes}\n`;
+
+      // Save to .txt file
+      const blob = new Blob([content], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+
+      // Save to localStorage
+      const logs = JSON.parse(localStorage.getItem('TaskLogs') || '[]');
+      logs.push({ timestamp: date, content });
+      localStorage.setItem('TaskLogs', JSON.stringify(logs));
+      alert('Report saved to file and history log!');
+    }
+
+    function downloadLog() {
+      const logs = JSON.parse(localStorage.getItem('TaskLogs') || '[]');
+      if (!logs.length) {
+        alert("No history yet!");
+        return;
+      }
+
+      let content = `Ron Addams - Task Log History\n\n`;
+      logs.forEach(entry => {
+        content += `=== ${entry.timestamp} ===\n${entry.content}\n\n`;
+      });
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = "Task_Log_History.txt";
+      a.click();
+    }
+
+  
+
+
+
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', autoSelectShift);
+
+function getSavedSchedule() {
+  const saved = localStorage.getItem("ravenSchedule");
+  return saved ? JSON.parse(saved) : {
+    0: "closing",
+    1: "opening",
+    2: "off",
+    3: "off",
+    4: "closing",
+    5: "closing",
+    6: "closing"
+  };
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadScheduleIntoEditor();
+  document.getElementById("schedule-form").addEventListener("submit", handleScheduleFormSubmit);
+});
+
+function getSavedSchedule() {
+  const saved = localStorage.getItem("userSchedule"); // match the save key in schedule.html
+  return saved ? JSON.parse(saved) : {
+    0: "closing",
+    1: "opening",
+    2: "off",
+    3: "off",
+    4: "closing",
+    5: "closing",
+    6: "closing"
+  };
+}
+
+
+
+    // Init
+    handleSubtasks();
+function updateProgress() {
+  const openingVisible = document.getElementById('opening').style.display === 'block';
+  const shiftId = openingVisible ? 'opening' : 'closing';
+  const fieldset = document.getElementById(shiftId);
+  const progressBar = document.getElementById(`progress-${shiftId}`);
+
+  const checkboxes = fieldset.querySelectorAll('input[type="checkbox"][data-task], input[type="checkbox"][data-subtask], input[type="checkbox"][data-subsubtask]');
+  const numberFields = fieldset.querySelectorAll('input[type="number"][data-subsubtask]');
+  const total = checkboxes.length + numberFields.length;
+
+  const checked = Array.from(checkboxes).filter(cb => cb.checked).length +
+                  Array.from(numberFields).filter(input => input.value !== "").length;
+
+  if (total === 0) {
+    progressBar.style.width = '0%';
+    return;
+  }
+
+  const percent = (checked / total) * 100;
+  progressBar.style.width = `${percent}%`;
+}
+
+    updateProgress();
+  </script>
+</body>
+</html>

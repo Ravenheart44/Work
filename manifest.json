@@ -1,0 +1,20 @@
+{
+  "name": "Raven's Work App",
+  "short_name": "Jukebox",
+  "start_url": "/index.html",  // or "/" if Netlify rewrites correctly
+  "display": "standalone",
+  "background_color": "#dabfff",
+  "theme_color": "#ff77e9",
+  "icons": [
+    {
+      "src": "Assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+ body {
+      font-family: Quicksand, sans-serif;
+      background: lavender;
+      padding: 20px;
+    }
+    .tab {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  background: rgb(100, 15, 62);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.tab:hover {
+  background: #650472;
+  transform: scale(1.05);
+}
+    .tabs {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .tabs a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    canvas.confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .timer-box {
+      font-weight: bold;
+      margin-top: 10px;
+      color: darkmagenta;
+    }
+  h1 {
+      text-align: center;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: purple;
+    }
+
+    fieldset {
+      border: 2px solid purple;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+     label {
+  font-size: 3.1em; /*    Increase this number to make it larger */
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subtasks {
+  margin-left: 20px;
+  font-size: 2.1em; /* Slightly smaller than main task, or match it if preferred */
+}
+
+    label.task {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+
+    label.subtask {
+      margin-left: 20px;
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px;
+      margin-top: 12px;
+      background: purple;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+
+    button:hover {
+      background: darkmagenta;
+    }
+
+    .sub-subtask {
+  margin-left: 40px;
+  font-size: 1.5em;
+  display: block;
+    }
+
+
+    .progress-container {
+      background: #ddd;
+      border-radius: 20px;
+      height: 20px;
+      margin: 10px 0;
+      overflow: auto;
+    }
+
+    .progress-bar {
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  .checkbox {
+  width: 8vw;  /* 4% of viewport width */
+  height: 8vw;
+  max-width: 32px;
+  max-height: 32px;
+  margin-right: 1vw;
+  border: 2px solid #888;
+  border-radius: 0.5vw;
+}
+ input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 12px;
+}
+
+#opening, #closing {
+  display: none; /* Hide both by default */
+}
+
+#schedule-editor {
+  background: lavender;
+  border: 2px dashed pink;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 20px;
+}
+
+.day-schedule {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+#scheduleEditor {
+  background-color: lavender;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: Quicksand;
+}
+
+#scheduleEditor select {
+  margin-bottom: 8px;
+  font-size: 1em;
+  padding: 4px;
+}
+input.small-number {
+  width: 3em;
+  font-size: 1.2em;
+  padding: 4px;
+  margin-left: 8px;
+  text-align: center;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #fffafc;
+}
+  
+@media only screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+      .container {
+        width: 100%;
+      }
+    }
+    body, label {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+    body {
+      font-family: Quicksand;
+      padding: 16px;
+      background: lavender;
+      color: #333;
+    }
+
+      fieldset {
+      border: 2px solid purple;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+     label {
+  font-size: 3.1em; /*    Increase this number to make it larger */
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subtasks {
+  margin-left: 20px;
+  font-size: 2.1em; /* Slightly smaller than main task, or match it if preferred */
+}
+
+    label.task {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+
+    label.subtask {
+      margin-left: 20px;
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px;
+      margin-top: 12px;
+      background: purple;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+
+    button:hover {
+      background: darkmagenta;
+    }
+
+    .sub-subtask {
+  margin-left: 40px;
+  font-size: 1.5em;
+  display: block;
+    }
+
+
+    .progress-container {
+      background: #ddd;
+      border-radius: 20px;
+      height: 20px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  .checkbox {
+  width: 8vw;  /* 4% of viewport width */
+  height: 8vw;
+  max-width: 32px;
+  max-height: 32px;
+  margin-right: 1vw;
+  border: 2px solid #888;
+  border-radius: 0.5vw;
+}
+ input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 12px;
+}
+
+#opening, #closing {
+  display: none; /* Hide both by default */
+}
+
+#schedule-editor {
+  background: lavender;
+  border: 2px dashed pink;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 20px;
+}
+
+.day-schedule {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+#scheduleEditor {
+  background-color: lavender;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: Quicksand;
+}
+
+#scheduleEditor select {
+  margin-bottom: 8px;
+  font-size: 1em;
+  padding: 4px;
+}
+input.small-number {
+  width: 3em;
+  font-size: 1.2em;
+  padding: 4px;
+  margin-left: 8px;
+  text-align: center;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #fffafc;
+}
+
+/* Jukebox style*/
+
+
+body {
+      font-family: Quicksand, sans-serif;
+      background: lavender;
+      padding: 20px;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .glitter {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://media.giphy.com/media/l0ExdMHUDKteztyfe/giphy.gif') repeat;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .disco {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(white 10%, #aaa 11%, #555 70%);
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+      z-index: 2;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .jukebox {
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 0 30px rgba(255,255,255,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin: auto;
+      
+    }
+    .playlist {
+      list-style: none;
+      padding: 0; margin: 0; width: 100%;
+    }
+    .playlist li {
+      background: rgba(255,255,255,0.05);
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+    .playlist li:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .playlist .active {
+      background: rgba(255,255,255,0.4);
+      font-weight: bold;
+    }
+    .controls button {
+      background: white; border: none;
+      padding: 0.5rem 1rem; margin: 0.5rem;
+      border-radius: 1rem; color: #111;
+      font-weight: bold; cursor: pointer;
+    }
+    .progress-bar {
+      width: 100%; height: 1rem;
+      background: #333;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%; width: 0%;
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400% 400%;
+      animation: rainbowFlow 4s linear infinite;
+    }
+    @keyframes rainbowFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    canvas {
+      width: 100%;
+      height: 100px;
+    }
+
+  

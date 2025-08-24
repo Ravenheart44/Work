@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="tabs">
+    <a href="index.html" class="tab">Work Timer</a>
+    <a href="checklist.html" class="tab">Checklist</a>
+    <a href="jukebox.html" class="tab">Jukebox</a>
+  <a href="meat-tabs/index.html" class="tab">Meat Codes</a>
+  </div>
+  <title>Daily Tasks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<h1>Edit Weekly Schedule</h1>
+  <form id="scheduleForm">
+    <div id="daysContainer"></div>
+    <button type="submit">Save Schedule</button>
+  </form>
+
+  <script>
+    const shifts = ["opening", "mid", "closing", "off"];
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    const container = document.getElementById("daysContainer");
+    const schedule = JSON.parse(localStorage.getItem("userSchedule") || "{}");
+
+    daysOfWeek.forEach((day, i) => {
+      const label = document.createElement("label");
+      label.textContent = `${day}: `;
+      const select = document.createElement("select");
+      select.name = `day${i}`;
+      shifts.forEach(shift => {
+        const option = document.createElement("option");
+        option.value = shift;
+        option.text = shift.charAt(0).toUpperCase() + shift.slice(1);
+        if (schedule[i] === shift) option.selected = true;
+        select.appendChild(option);
+      });
+      label.appendChild(select);
+      container.appendChild(label);
+      container.appendChild(document.createElement("br"));
+    });
+
+    document.getElementById("scheduleForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const newSchedule = {};
+      for (let i = 0; i < 7; i++) {
+        newSchedule[i] = this[`day${i}`].value;
+      }
+      localStorage.setItem("userSchedule", JSON.stringify(newSchedule));
+        alert("Schedule saved successfully!");
+    });
+
+    function getSavedSchedule() {
+  const saved = localStorage.getItem("userSchedule"); // match the save key in schedule.html
+  return saved ? JSON.parse(saved) : {
+    0: "closing",
+    1: "opening",
+    2: "off",
+    3: "off",
+    4: "closing",
+    5: "closing",
+    6: "closing"
+  };
+}
+
+  </script>
+</body>
+</html>
+

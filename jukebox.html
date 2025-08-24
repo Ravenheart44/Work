@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎶 Rainbow Jukebox</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<div class="tabs">
+    <a href="index.html" class="tab">Work Timer</a>
+    <a href="checklist.html" class="tab">Checklist</a>
+    <a href="meat-tabs/index.html" class="tab">Meat Codes</a>
+    <a href="schedule.html" class="tab">Schedule</a>
+</div>
+
+<body>
+  <div class="glitter"></div>
+  <div class="disco"></div>
+  <div class="jukebox">
+    <h2 id="now-playing">🎵 Now Playing: Nothing</h2>
+    <input type="file" id="filePicker" accept="audio/*" multiple />
+    <ul class="playlist" id="playlist"></ul>
+    <div class="controls">
+      <button id="savePlaylist">💾 Save Playlist</button>
+<button id="loadPlaylist">📂 Load Playlist</button>
+      <button id="play">▶️ Play</button>
+      <button id="pause">⏸️ Pause</button>
+      <button id="shuffle">🔀 Shuffle</button>
+      <button id="next">Next</button>
+      <label>
+        <button id="openFolder">📁 Open Music Folder</button>
+<button id="savePlaylist">💾 Export Playlist</button>
+<button id="loadPlaylist">📂 Import Playlist</button>
+        Volume: <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+      </label>
+    </div>
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    <canvas id="waveform"></canvas>
+  </div>
+  <audio id="audio" crossorigin="anonymous"></audio>
+
+  <script>
+let fileHandles = [];
+let tracks = [];
+let currentIndex = 0;
+let isShuffled = false;
+
+// Load track and update UI
+function loadTrack(index) {
+  fileHandles[index].getFile().then(file => {
+    const url = URL.createObjectURL(file);
+    audio.src = url;
+    updatePlaylistUI(file.name);
+  });
+}
+
+// UI updates
+function updatePlaylistUI(name) {
+  playlist.querySelectorAll("li").forEach((li, i) => {
+    li.classList.toggle("active", i === currentIndex);
+  });
+  nowPlaying.textContent = `🎵 Now Playing: ${name}`;
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: name,
+      artist: "Raven the Fabulous",
+      album: "Rainbow Jukebox",
+      artwork: [{ src: "https://via.placeholder.com/192", sizes: "192x192", type: "image/png" }]
+    });
+  }
+}
+
+// Open folder and list audio files
+document.getElementById("openFolder").addEventListener("click", async () => {
+  const dirHandle = await window.showDirectoryPicker();
+  fileHandles = [];
+  playlist.innerHTML = "";
+
+  for await (const entry of dirHandle.values()) {
+    if (entry.kind === "file" && entry.name.match(/\.(mp3|wav|ogg|m4a|flac)$/i)) {
+      fileHandles.push(entry);
+      const li = document.createElement("li");
+      li.textContent = `🎶 ${entry.name}`;
+      const index = fileHandles.length - 1;
+      li.addEventListener("click", () => {
+        currentIndex = index;
+        loadTrack(currentIndex);
+        audio.play();
+      });
+      playlist.appendChild(li);
+    }
+  }
+
+  if (fileHandles.length > 0) {
+    currentIndex = 0;
+    loadTrack(currentIndex);
+  }
+});
+
+// Auto-play next song
+audio.addEventListener("ended", () => {
+  playNextTrack();
+});
+
+function playNextTrack() {
+  currentIndex = isShuffled ? Math.floor(Math.random() * fileHandles.length) : (currentIndex + 1) % fileHandles.length;
+  loadTrack(currentIndex);
+  audio.play();
+}
+
+// Export playlist as JSON
+document.getElementById("savePlaylist").addEventListener("click", async () => {
+  const playlistData = await Promise.all(fileHandles.map(async (h) => ({
+    name: h.name,
+    handle: await h
+  })));
+
+  const file = await window.showSaveFilePicker({
+    suggestedName: "rainbow_playlist.json",
+    types: [{ description: "JSON", accept: { "application/json": [".json"] } }]
+  });
+
+  const writable = await file.createWritable();
+  await writable.write(JSON.stringify(playlistData, null, 2));
+  await writable.close();
+
+  alert("Playlist saved!");
+});
+
+// Import playlist JSON and restore handles
+document.getElementById("loadPlaylist").addEventListener("click", async () => {
+  const [fileHandle] = await window.showOpenFilePicker({ types: [{ accept: { "application/json": [".json"] } }] });
+  const file = await fileHandle.getFile();
+  const text = await file.text();
+  const imported = JSON.parse(text);
+
+  fileHandles = [];
+  playlist.innerHTML = "";
+
+  for (let [index, item] of imported.entries()) {
+    const handle = item.handle;
+    if (!(await handle.queryPermission({ mode: 'read' })) === 'granted') {
+      const permission = await handle.requestPermission({ mode: 'read' });
+      if (permission !== 'granted') {
+        alert(`Permission denied for ${item.name}`);
+        continue;
+      }
+    }
+    fileHandles.push(handle);
+    const li = document.createElement("li");
+    li.textContent = `🎶 ${item.name}`;
+    li.addEventListener("click", () => {
+      currentIndex = index;
+      loadTrack(currentIndex);
+      audio.play();
+    });
+    playlist.appendChild(li);
+  }
+
+  if (fileHandles.length > 0) {
+    currentIndex = 0;
+    loadTrack(currentIndex);
+  }
+});
+  </script>
+</body>
+</html>

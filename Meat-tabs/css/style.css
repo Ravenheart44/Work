@@ -1,0 +1,50 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #f0f0ff;
+  padding: 20px;
+}
+
+.tab-button, .nested-tab-button {
+  padding: 10px;
+  margin: 2px;
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  border: 1px solid purple;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px #aaa;
+}
+
+.tab-button.active, .nested-tab-button.active {
+  background: purple;
+  color: #fff;
+}
+
+.tab-content, .nested-tab-content {
+  display: none;
+  padding: 10px;
+  border: 2px dashed #999;
+  background: #fffafc;
+  margin-top: 10px;
+}
+
+.tab-content.active, .nested-tab-content.active {
+  display: block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: lavender;
+}

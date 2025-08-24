@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meat Codes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/storage/emulated/0/SdCardBackUp/Work/style.css">
+</head>
+<body>
+
+  <div class="tabs">
+  <button onclick="location.href='/storage/emulated/0/SdCardBackUp/Work/index.html'">Work Timer</button>
+  <button onclick="location.href='/storage/emulated/0/SdCardBackUp/Work/checklist.html'">Checklist</button>
+  <button onclick="location.href='/storage/emulated/0/SdCardBackUp/Work/jukebox.html'">Jukebox</button>
+  <button onclick="location.href='/storage/emulated/0/SdCardBackUp/Work/schedule.html'">Schedule</button>
+  
+</div>
+
+
+  
+
+  <div id="meat" class="tab-content active">
+    <h2>Meat Codes</h2>
+    <div class="nested-tabs">
+      <button class="nested-tab-button active" data-tab="beef">Case Ready Beef</button>
+      <button class="nested-tab-button" data-tab="poultry">Poultry</button>
+      <button class="nested-tab-button" data-tab="pork">Pork</button>
+      <button class="nested-tab-button" data-tab="grinds">Grinds</button>
+      <button class="nested-tab-button active" data-tab="Cuts">Store Cut Steak</button>
+      <button class="nested-tab-button" data-tab="nppork">NP Pork</button>
+      <button class="nested-tab-button" data-tab="npchick">NP Chicken</button>
+      <button class="nested-tab-button" data-tab="Veal">Lamb and Veal</button>
+      <button class="nested-tab-button" data-tab="smoked">Smoked Meats</button>
+      <button class="nested-tab-button" data-tab="Seafood">Seafood</button>
+
+
+
+
+    </div>
+
+    <div id="beef" class="nested-tab-content active"></div>
+    <div id="poultry" class="nested-tab-content"></div>
+    <div id="pork" class="nested-tab-content"></div>
+    <div id="grinds" class="nested-tab-content"></div>
+    <div id="Cuts" class="nested-tab-content active"></div>
+    <div id="nppork" class="nested-tab-content"></div>
+    <div id="npchick" class="nested-tab-content"></div>
+    <div id="Veal" class="nested-tab-content"></div>
+    <div id="smoked" class="nested-tab-content"></div>
+    <div id="Seafood" class="nested-tab-content"></div>
+  </div>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/csv-loader.js"></script>
+</body>
+</html>
+
